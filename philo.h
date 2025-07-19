@@ -6,10 +6,19 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <errno.h>
 # include <sys/time.h>
 # include <unistd.h>
 
 typedef struct s_data t_data;
+
+typedef enum mutex_op
+{
+	INIT,
+	DESTORY,
+	LOCK,
+	UNLOCK,
+}	t_mutex_op;
 
 typedef struct s_mtx
 {
@@ -50,6 +59,7 @@ typedef struct s_data
 
 
 void error_exit(char *msg);
+int parse_input(t_data *data, char **ag);
 
 
 #endif

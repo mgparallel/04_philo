@@ -1,13 +1,14 @@
 #include "philo.h"
 
-// 0          1                       2             3             4               5
-// ./philo,  number_of_philosophers, time_to_die, time_to_eat, time_to_sleep, [must_eat_count]
+// 0          1                  2             3             4               5
+// ./philo,  number_of_philo, time_to_die, time_to_eat, time_to_sleep, [must_eat_count]
 int main(int ac, char **ag)
 {
+	t_data *data;
+
 	if (ac == 5 || ac == 6)
 	{
-		//check if input is valid
-		parse_input();
+		parse_input(data, ag);
 		//assign data into the stucture, initiate the round
 		data_init();
 		//

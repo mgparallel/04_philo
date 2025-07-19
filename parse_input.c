@@ -32,9 +32,17 @@ long ft_atol(char *str) // "   +77uas"
 	return (nbr);
 }
 
-0          1                       2             3             4               5
-./philo,  number_of_philosophers, time_to_die, time_to_eat, time_to_sleep, [must_eat_count]
-int valid_input(t_data *data, char **ag)
+//   0          1                       2             3             4             5
+// ./philo,  number_of_philosophers, time_to_die, time_to_eat, time_to_sleep, [must_eat_count]
+int parse_input(t_data *data, char **ag)
 {
 	data->philo_nbr = ft_atol(ag[1]);
+	data->time_to_die = ft_atol(ag[2]);
+	data->time_to_eat = ft_atol(ag[3]);
+	data->time_to_sleep = ft_atol(ag[4]);
+	if (ag[5])
+		data->meal_max_limit = ft_atol(ag[5]);
+	else
+		data->meal_max_limit = -1;
+	
 }
