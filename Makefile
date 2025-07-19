@@ -1,5 +1,6 @@
 CC = -gcc
 CFLAGS = -Wall -Werror -Wextra
+LIBS = -lpthread #check
 SANITIZE = -fsanitize=address
 RM = rm -rf
 NAME = philo
@@ -12,7 +13,7 @@ HEADER = philo.h
 all: $(NAME)
 
 $(NAME): $(OBJS) Makefile $(HEADER)
-			$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(SANITIZE)
+			$(CC) $(CFLAGS) -o $(NAME) $(LIBS) $(OBJS) $(SANITIZE)
 
 %.o: %.c $(HEADER)
 			$(CC) $(CFLAGS) -c $< -o $@
