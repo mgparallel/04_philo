@@ -15,7 +15,7 @@ typedef struct s_data t_data;
 typedef enum mutex_op
 {
 	INIT,
-	DESTORY,
+	DESTROY,
 	LOCK,
 	UNLOCK,
 }	t_mutex_op;
@@ -58,8 +58,9 @@ typedef struct s_data
 }					t_data;
 
 
-void error_exit(char *msg);
-int parse_input(t_data *data, char **ag);
+int error_exit(char *msg);
+int	mutex_error(int status, t_mutex_op op);
+void parse_input(t_data *data, char **ag);
 
 
 #endif

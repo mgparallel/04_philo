@@ -34,7 +34,7 @@ long ft_atol(char *str) // "   +77uas"
 
 //   0          1                       2             3             4             5
 // ./philo,  number_of_philosophers, time_to_die, time_to_eat, time_to_sleep, [must_eat_count]
-int parse_input(t_data *data, char **ag)
+void parse_input(t_data *data, char **ag)
 {
 	data->philo_nbr = ft_atol(ag[1]);
 	data->time_to_die = ft_atol(ag[2]);
@@ -44,5 +44,4 @@ int parse_input(t_data *data, char **ag)
 		data->meal_max_limit = ft_atol(ag[5]);
 	else
 		data->meal_max_limit = -1;
-	
 }
