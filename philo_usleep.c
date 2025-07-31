@@ -1,6 +1,6 @@
 #include "philo.h"
 
-void philo_usleep(long time_ms)
+void	philo_usleep(long time_ms)
 {
 	long start;
 

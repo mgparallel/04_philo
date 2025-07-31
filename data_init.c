@@ -1,8 +1,8 @@
 #include "philo.h"
 
-void philo_init(t_data *data, t_philo *philo)
+void	philo_init(t_data *data, t_philo *philo)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < data->philo_nbr)
@@ -25,15 +25,14 @@ void philo_init(t_data *data, t_philo *philo)
 		}
 		philo[i].dead_lock = &data->dead_lock;
 		philo[i].write_lock = &data->write_lock;
-		philo[i].meal_lock = &data->meal_lock;
 		i++;
 	}
 }
 
-void data_init(t_data *data)
+void	data_init(t_data *data)
 {
-	int i;
-	t_philo *philo;
+	int		i;
+	t_philo	*philo;
 
 	i = 0;
 	philo = safe_malloc(sizeof(t_philo) * data->philo_nbr);

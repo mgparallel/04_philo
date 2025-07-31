@@ -1,16 +1,16 @@
 #include "philo.h"
 
-int is_space(char ch)
+int	is_space(char ch)
 {
 	return ((ch >= 9 && ch <= 13) || ch == 32);
 }
 
-int is_num(char ch)
+int	is_num(char ch)
 {
 	return (ch >= 48 && ch <= 57);
 }
 
-long ft_atol(char *str) // "   +77uas"
+long	ft_atol(char *str) // "   +77uas"
 {
 	long nbr;
 
@@ -34,8 +34,9 @@ long ft_atol(char *str) // "   +77uas"
 }
 
 //   0          1                       2             3             4             5
-// ./philo,  number_of_philosophers, time_to_die, time_to_eat, time_to_sleep, [must_eat_count]
-int parse_input(t_data *data, char **ag)
+// ./philo,  number_of_philosophers, time_to_die, time_to_eat, time_to_sleep,
+	[must_eat_count]
+int	parse_input(t_data *data, char **ag)
 {
 	int i;
 

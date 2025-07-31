@@ -1,6 +1,6 @@
 #include "philo.h"
 
-void destroy(t_data *data, t_mtx *fork)
+void	destroy(t_data *data, t_mtx *fork)
 {
 	int i;
 
