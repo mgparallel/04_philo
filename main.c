@@ -22,8 +22,7 @@ void	print_msg(t_philo *philo, t_mode mode)
 }
 
 // 0               1              2             3             4               5
-// ./philo,  number_of_philo, time_to_die, time_to_eat, time_to_sleep,
-	[must_eat_count]
+// ./philo,  number_of_philo, time_to_die, time_to_eat, time_to_sleep, [must_eat_count]
 
 int	main(int ac, char **ag)
 {
