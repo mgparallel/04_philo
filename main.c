@@ -1,9 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: menwu <menwu@student.42barcelona.com>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 21:56:42 by menwu             #+#    #+#             */
+/*   Updated: 2025/07/31 22:43:20 by menwu            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
+
+int	print_msg_util(t_philo *philo)
+{
+	safe_mutex(pthread_mutex_lock(&philo->data->dead_lock), LOCK);
+	if (philo->data->end_flag)
+	{
+		safe_mutex(pthread_mutex_unlock(&philo->data->dead_lock), UNLOCK);
+		return (1);
+	}
+	safe_mutex(pthread_mutex_unlock(&philo->data->dead_lock), UNLOCK);
+	return (0);
+}
 
 void	print_msg(t_philo *philo, t_mode mode)
 {
 	long	time;
 
+	if (mode != DIED)
+	{
+		if (print_msg_util(philo))
+			return ;
+	}
 	safe_mutex(pthread_mutex_lock(philo->write_lock), LOCK);
 	time = get_time_mc() - philo->data->start_time;
 	if (mode == EAT)
@@ -21,12 +50,9 @@ void	print_msg(t_philo *philo, t_mode mode)
 	safe_mutex(pthread_mutex_unlock(philo->write_lock), UNLOCK);
 }
 
-// 0               1              2             3             4               5
-// ./philo,  number_of_philo, time_to_die, time_to_eat, time_to_sleep, [must_eat_count]
-
 int	main(int ac, char **ag)
 {
-	t_data *data;
+	t_data	*data;
 
 	if (ac != 5 && ac != 6)
 		return (error_exit("Incorrect number of arguments"));

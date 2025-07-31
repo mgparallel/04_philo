@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exit_error.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: menwu <menwu@student.42barcelona.com>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 22:16:46 by menwu             #+#    #+#             */
+/*   Updated: 2025/07/31 22:18:25 by menwu            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
-int	error_exit(char *msg) // check to exit during parse_input
+int	error_exit(char *msg)
 {
 	printf("%s\n", msg);
 	return (-1);
@@ -28,13 +40,13 @@ int	safe_mutex(int status, t_pcode op)
 	else if (status == EINVAL && op == INIT)
 		return (error_exit("Invalid mutex attribute being set"));
 	else if (status == ENOMEM)
-		return (error_exit("Insufficient memory exists to initialize the mutex"));
+		return (error_exit("Insufficient memory to init mutex"));
 	else if (status == EPERM)
-		return (error_exit("The caller does not have the privilege to perform the operation"));
+		return (error_exit("Cannot perform the operation"));
 	else if (status == EDEADLK && op == LOCK)
 		return (error_exit("deadlock condition was detected"));
 	else if (status == EBUSY && op == DESTROY)
-		return (error_exit("Mutex is currently locked and cannot be destroyed"));
+		return (error_exit("Mutex is currently locked"));
 	else
 		return (error_exit("Unknow error"));
 }
@@ -55,7 +67,7 @@ int	handle_thread_error(int status, t_pcode op)
 int	safe_thread_handle(pthread_t *thread, void *(*f)(void *), void *philo,
 		t_pcode op)
 {
-	int status;
+	int	status;
 
 	status = 0;
 	if (op == CREATE)
