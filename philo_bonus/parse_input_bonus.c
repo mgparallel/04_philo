@@ -6,7 +6,7 @@
 /*   By: menwu <menwu@student.42barcelona.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 22:33:18 by menwu             #+#    #+#             */
-/*   Updated: 2025/08/03 00:40:08 by menwu            ###   ########.fr       */
+/*   Updated: 2025/08/04 08:35:05 by menwu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	parse_input(t_core *core, char **ag)
 	int	i;
 
 	i = 0;
+	core = safe_malloc(core, sizeof(t_core));
 	while (ag[++i])
 	{
 		if (ft_atol(ag[i]) == -1)
